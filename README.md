@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Chatbot Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This chatbot application is a simple, interactive interface built using **React** and **AWS**. The chatbot communicates with an AWS Lambda function, which uses **OpenAI’s GPT model** to generate responses. The chat history is stored in **AWS DynamoDB** for future reference.
 
-## Available Scripts
+## Features
+- **User Interaction**: Allows users to input messages and receive responses from the AI bot in real-time.
+- **AI-Powered Responses**: Uses **OpenAI’s GPT-4** model to generate natural language responses.
+- **Persistent Chat History**: All chat messages (user and bot) are stored in **AWS DynamoDB** for each user session.
+- **Simple UI**: Clean and responsive interface built with **React**.
 
-In the project directory, you can run:
+## Architecture
+1. **Frontend**: 
+   - Built using **React** to create a simple and interactive UI.
+   - Users send messages via HTTP requests to the **API Gateway**.
 
-### `npm start`
+2. **API Gateway**:
+   - Acts as a bridge between the frontend and the backend.
+   - Routes requests to the **Lambda function**.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. **Lambda**:
+   - Handles incoming requests from the frontend.
+   - Uses **OpenAI GPT-4** to generate a response.
+   - Stores the conversation in **AWS DynamoDB**.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4. **DynamoDB**:
+   - Stores the **user messages** and **bot responses** along with a **session ID** for tracking user history.
