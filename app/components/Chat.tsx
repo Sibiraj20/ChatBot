@@ -17,7 +17,7 @@ export default function Chat() {
     setInput("")
 
     try {
-      const response = await fetch("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", {
+      const response = await fetch("API_Gateway URL", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
