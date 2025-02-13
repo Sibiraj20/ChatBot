@@ -17,7 +17,7 @@ export default function Chat() {
     setInput("")
 
     try {
-      const response = await fetch("API_Gateway URL", {
+      const response = await fetch("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", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,6 +30,8 @@ export default function Chat() {
       const data = await response.json()
       setMessages([...newMessages, { role: "assistant", content: data.message }])
     } catch (error) {
+      console.error("Error:", error)
+
       console.error("Error:", error)
     }
   }
